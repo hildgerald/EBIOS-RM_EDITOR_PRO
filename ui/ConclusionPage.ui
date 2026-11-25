@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ui version="4.0">
- <class>ConclusionPage</class>
- <widget class="QWidget" name="ConclusionPage"><property name="geometry"><rect><x>0</x><y>0</y><width>900</width><height>600</height></rect></property><layout class="QVBoxLayout" name="verticalLayout"><item><widget class="QLabel" name="titleLabel"><property name="text"><string>Conclusion</string></property><property name="font"><font><pointsize>14</pointsize><bold>true</bold></font></property></widget></item><item><widget class="QLabel" name="helpLabel"><property name="text"><string>Texte libre repris tel quel dans le chapitre « Conclusion » du rapport (syntaxe Markdown acceptée : listes avec « - », gras avec **texte**…). Le bouton propose un brouillon calculé à partir de l'analyse, que vous pouvez ensuite modifier librement.</string></property><property name="styleSheet"><string>color:#555;</string></property><property name="wordWrap"><bool>true</bool></property></widget></item><item><layout class="QHBoxLayout" name="draftLayout"><item><widget class="QPushButton" name="draftButton"><property name="text"><string>Générer un brouillon automatique</string></property></widget></item><item><spacer name="draftSpacer"><property name="orientation"><enum>Qt::Horizontal</enum></property><property name="sizeHint" stdset="0"><size><width>40</width><height>20</height></size></property></spacer></item></layout></item><item><widget class="QPlainTextEdit" name="conclusionEdit"><property name="placeholderText"><string>Rédigez ici la conclusion de l'analyse de risques…</string></property></widget></item></layout></widget>
- 
- <resources/>
- <connections/>
-</ui>

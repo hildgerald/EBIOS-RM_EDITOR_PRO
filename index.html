@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#081426">
+  <meta name="description" content="EBIOS RM Studio : un environnement de travail dédié à l'analyse de risques selon la méthode EBIOS Risk Manager. Windows et Linux.">
+  <title>EBIOS RM Studio — Maîtrisez vos analyses de risques</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#081426;--panel:#0e1d32;--panel2:#122640;--line:rgba(167,193,224,.14);--text:#edf5ff;--muted:#a4b5ca;--blue:#55a8ff;--cyan:#56e0d0;--green:#75e0b0}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:"DM Sans",sans-serif;line-height:1.6}
+    a{color:inherit;text-decoration:none}.wrap{width:min(1160px,calc(100% - 44px));margin:auto}
+    .topbar{height:76px;border-bottom:1px solid var(--line);display:flex;align-items:center;position:sticky;top:0;background:rgba(8,20,38,.88);backdrop-filter:blur(16px);z-index:10}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:25px}.brand{display:flex;align-items:center;gap:12px;font-family:Manrope,sans-serif;font-weight:800;letter-spacing:-.4px}
+    .logo{width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,#4e9fff,#55e0d0);display:grid;place-items:center;color:#071528;font-weight:900;font-size:18px;box-shadow:0 8px 25px #369dff33}
+    .brand small{display:block;color:var(--muted);font:500 10px "DM Sans";letter-spacing:1.7px;text-transform:uppercase;margin-top:-4px}
+    .navlinks{display:flex;align-items:center;gap:28px;color:#bdcadd;font-size:13px}.navlinks a:hover{color:white}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:12px 18px;border-radius:10px;font-weight:700;font-size:13px;transition:.2s;border:1px solid transparent}
+    .btn-primary{background:linear-gradient(110deg,#58a8ff,#55d9d0);color:#071629;box-shadow:0 10px 30px #3ca9ef2b}.btn-primary:hover{transform:translateY(-2px);filter:brightness(1.08)}
+    .btn-ghost{border-color:var(--line);background:#ffffff08;color:#e9f4ff}.btn-ghost:hover{background:#ffffff13}
+    .hero{padding:88px 0 78px;position:relative;overflow:hidden}.hero:before{content:"";position:absolute;width:650px;height:650px;right:-120px;top:-220px;background:radial-gradient(circle,#1a75bb35,transparent 66%);pointer-events:none}
+    .hero-grid{display:grid;grid-template-columns:1fr 1.03fr;gap:55px;align-items:center;position:relative}
+    .eyebrow{display:inline-flex;align-items:center;gap:9px;color:#8fdcf0;border:1px solid #5dcbd32d;background:#4bcbd00d;padding:7px 12px;border-radius:99px;font-size:11px;font-weight:700;letter-spacing:1.3px;text-transform:uppercase}
+    .dot{width:7px;height:7px;border-radius:50%;background:var(--cyan);box-shadow:0 0 12px var(--cyan)}
+    h1,h2,h3{font-family:Manrope,sans-serif;line-height:1.15;letter-spacing:-1.1px}h1{font-size:clamp(42px,5.4vw,66px);margin:22px 0 20px;font-weight:800}h1 span{background:linear-gradient(100deg,#69b5ff,#64e4d3);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .lead{font-size:17px;color:#b3c3d7;max-width:540px;line-height:1.75}.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin:30px 0 25px}
+    .meta{display:flex;gap:20px;flex-wrap:wrap;color:#91a6bf;font-size:12px}.meta span{display:flex;align-items:center;gap:7px}.check{color:var(--green);font-weight:900}
+    .app-window{background:#0c192a;border:1px solid #7aa8d42d;border-radius:16px;box-shadow:0 30px 90px #0008,0 0 0 8px #ffffff05;overflow:hidden;transform:perspective(1200px) rotateY(-4deg) rotateX(2deg)}
+    .window-head{height:43px;background:#13243a;border-bottom:1px solid var(--line);display:flex;align-items:center;padding:0 15px;gap:7px}.win-dot{width:8px;height:8px;border-radius:50%;background:#526b85}.window-title{font-size:10px;color:#91a9c3;margin-left:8px}
+    .app-body{display:grid;grid-template-columns:135px 1fr;min-height:340px}.sidebar{background:#0a1728;border-right:1px solid var(--line);padding:17px 10px}.side-label{font-size:8px;color:#6e89a6;letter-spacing:1.4px;margin:9px 8px;text-transform:uppercase}.side-item{padding:7px 8px;border-radius:6px;font-size:9px;color:#9bb0c8;margin:3px 0}.side-item.active{background:#1e4770;color:#bfe5ff;border-left:2px solid #61c8ed}
+    .screen{padding:20px 19px}.screen-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:17px}.screen h3{font-size:16px;margin:0;letter-spacing:-.3px}.tag{font-size:8px;color:#7ce0c2;background:#2b967b1e;border:1px solid #55d9ae35;padding:4px 7px;border-radius:5px}
+    .metric-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.metric{background:#13263d;border:1px solid var(--line);border-radius:8px;padding:10px}.metric small{display:block;color:#8ca4bd;font-size:8px}.metric strong{font:700 19px Manrope;display:block;margin-top:3px}.metric em{font-style:normal;color:#70d8c4;font-size:8px}
+    .mini-title{font-size:9px;color:#b9c9dc;margin:17px 0 8px}.table{border:1px solid var(--line);border-radius:8px;overflow:hidden}.tr{display:grid;grid-template-columns:1.5fr .8fr .7fr .6fr;padding:8px 9px;border-bottom:1px solid var(--line);font-size:8px;color:#9db0c5}.tr:last-child{border:0}.tr.head{background:#14283f;color:#6f8eae;font-size:7px;text-transform:uppercase;letter-spacing:.6px}.risk{color:#ffb77a}.medium{color:#f2d47d}.low{color:#78dcb9}
+    .section{padding:86px 0}.section.alt{background:#0b192b;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.section-head{text-align:center;max-width:690px;margin:0 auto 42px}.kicker{color:#65cbd5;text-transform:uppercase;font-size:11px;letter-spacing:1.8px;font-weight:700}.section h2{font-size:clamp(30px,4vw,42px);margin:12px 0}.section-head p{color:var(--muted);font-size:15px}
+    .feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.card{padding:23px;background:linear-gradient(145deg,#11243b,#0d1b2e);border:1px solid var(--line);border-radius:13px;transition:.2s}.card:hover{transform:translateY(-4px);border-color:#5baee755}.icon{width:40px;height:40px;border-radius:11px;display:grid;place-items:center;background:#4b9eff18;color:#75c1ff;font-size:19px;margin-bottom:17px}.card h3{font-size:16px;margin:0 0 9px;letter-spacing:-.3px}.card p{font-size:13px;color:#9fb1c7;margin:0;line-height:1.7}
+    .workshops{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}.workshop{background:#10233a;border:1px solid var(--line);border-radius:11px;padding:17px 14px;min-height:145px}.num{font:800 27px Manrope;color:#5bb9e8}.workshop h3{font-size:13px;letter-spacing:-.3px;margin:10px 0 5px}.workshop p{font-size:11px;color:#91a7bf;margin:0}
+    .exports{display:grid;grid-template-columns:1fr 1fr;gap:35px;align-items:center}.exports h2{font-size:36px}.exports p{color:var(--muted);font-size:14px}.export-list{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:24px}.export{padding:15px 10px;text-align:center;border-radius:10px;background:#122740;border:1px solid var(--line)}.export b{display:block;font:800 18px Manrope;color:#8acbff}.export small{font-size:10px;color:#a5b8cd}
+    .quote-panel{padding:25px;background:linear-gradient(130deg,#122a45,#102137);border:1px solid #64b6e32e;border-radius:14px}.quote-panel strong{font:700 14px Manrope}.quote-panel p{font-size:13px;color:#a7bbd1}.pill{display:inline-block;border:1px solid var(--line);padding:6px 10px;border-radius:7px;font-size:10px;color:#b4c8dd;margin:4px 4px 0 0}
+    .cta{padding:70px 0;text-align:center;background:radial-gradient(ellipse at center,#17436a66,transparent 65%)}.cta h2{font-size:38px;margin:12px 0}.cta p{color:#a9bbd0;margin:0 auto 25px;max-width:600px}
+    footer{border-top:1px solid var(--line);padding:25px 0;color:#7f94ad;font-size:11px}.foot{display:flex;justify-content:space-between;gap:20px;align-items:center}.foot a{color:#a9c7e6}
+    @media(max-width:850px){.hero-grid{grid-template-columns:1fr;gap:42px}.app-window{transform:none;max-width:650px;width:100%;margin:auto}.feature-grid{grid-template-columns:repeat(2,1fr)}.workshops{grid-template-columns:repeat(3,1fr)}.exports{grid-template-columns:1fr}.navlinks{gap:13px}.navlinks a:not(.btn){display:none}}
+    @media(max-width:540px){.wrap{width:min(100% - 30px,1160px)}.topbar{height:66px}.brand{font-size:13px}.nav .btn{padding:10px 11px;font-size:11px}.hero{padding:65px 0 55px}h1{font-size:43px}.lead{font-size:15px}.feature-grid{grid-template-columns:1fr}.workshops{grid-template-columns:repeat(2,1fr)}.app-body{grid-template-columns:105px 1fr}.sidebar{padding:12px 7px}.screen{padding:14px 10px}.metric{padding:7px}.metric strong{font-size:15px}.tr{font-size:7px;padding:7px 5px}.section{padding:65px 0}.foot{align-items:flex-start;flex-direction:column}.export-list{gap:6px}}
+  </style>
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap nav">
+    <a class="brand" href="#accueil"><span class="logo">E</span><span>EBIOS RM STUDIO<small>Risk analysis workspace</small></span></a>
+    <nav class="navlinks" aria-label="Navigation principale">
+      <a href="#fonctionnalites">Fonctionnalités</a><a href="#methode">Les 5 ateliers</a><a href="#rapports">Rapports</a>
+      <a class="btn btn-ghost" href="https://github.com/hildgerald/EBIOS-RM_EDITOR_PRO" target="_blank" rel="noopener">Voir le projet ↗</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="accueil">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow"><span class="dot"></span> Analyse de risques · EBIOS Risk Manager</div>
+      <h1>Donnez de la clarté à vos <span>analyses de risques.</span></h1>
+      <p class="lead">EBIOS RM Studio est une application de bureau conçue pour structurer vos études de risques, piloter les cinq ateliers de la méthode EBIOS Risk Manager et produire des rapports professionnels.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="https://github.com/hildgerald/EBIOS-RM_EDITOR_PRO" target="_blank" rel="noopener">Découvrir le logiciel <span>↗</span></a>
+        <a class="btn btn-ghost" href="#fonctionnalites">Explorer les fonctionnalités ↓</a>
+      </div>
+      <div class="meta"><span><b class="check">✓</b> Windows & Linux</span><span><b class="check">✓</b> Licence MIT</span><span><b class="check">✓</b> Projets au format .ebios</span></div>
+    </div>
+    <div class="app-window" aria-label="Aperçu illustratif de l'interface EBIOS RM Studio">
+      <div class="window-head"><i class="win-dot"></i><i class="win-dot"></i><i class="win-dot"></i><span class="window-title">EBIOS RM Studio — Tableau de bord de l'étude</span></div>
+      <div class="app-body">
+        <aside class="sidebar">
+          <div class="side-label">Navigation</div>
+          <div class="side-item active">◈ Sommaire</div><div class="side-item">▦ Métriques</div>
+          <div class="side-label">Étude EBIOS RM</div>
+          <div class="side-item">01 · Cadrage</div><div class="side-item">02 · Sources de risque</div><div class="side-item">03 · Scénarios stratégiques</div><div class="side-item">04 · Scénarios opérationnels</div><div class="side-item">05 · Traitement</div>
+          <div class="side-label">Restitution</div><div class="side-item">Rapport</div><div class="side-item">Conclusion</div>
+        </aside>
+        <div class="screen">
+          <div class="screen-top"><h3>Synthèse de l'étude</h3><span class="tag">ÉTUDE ACTIVE</span></div>
+          <div class="metric-row">
+            <div class="metric"><small>Ateliers</small><strong>05</strong><em>Vue globale</em></div>
+            <div class="metric"><small>Scénarios</small><strong>12</strong><em>Cartographiés</em></div>
+            <div class="metric"><small>Risques</small><strong>08</strong><em>À traiter</em></div>
+          </div>
+          <div class="mini-title">Évaluation des risques — aperçu illustratif</div>
+          <div class="table">
+            <div class="tr head"><span>Scénario</span><span>Gravité</span><span>Vraisemblance</span><span>Niveau</span></div>
+            <div class="tr"><span>Indisponibilité du service</span><span>Élevée</span><span>Moyenne</span><b class="risk">Fort</b></div>
+            <div class="tr"><span>Exfiltration de données</span><span>Critique</span><span>Moyenne</span><b class="risk">Fort</b></div>
+            <div class="tr"><span>Altération des données</span><span>Modérée</span><span>Faible</span><b class="medium">Modéré</b></div>
+            <div class="tr"><span>Perte d'un équipement</span><span>Faible</span><span>Faible</span><b class="low">Faible</b></div>
+          </div>
+          <div class="mini-title">Progression de l'analyse</div>
+          <div style="height:6px;background:#20364e;border-radius:8px;overflow:hidden"><div style="width:72%;height:100%;background:linear-gradient(90deg,#55a8ff,#56e0d0);border-radius:8px"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section alt" id="fonctionnalites">
+  <div class="wrap">
+    <div class="section-head"><div class="kicker">Un environnement structuré</div><h2>Tout votre travail, au même endroit.</h2><p>Une application dédiée à la conduite de vos analyses EBIOS RM, de la description du contexte jusqu'à la restitution des résultats.</p></div>
+    <div class="feature-grid">
+      <article class="card"><div class="icon">▤</div><h3>Étude structurée</h3><p>Organisez vos informations dans une navigation claire couvrant les cinq ateliers et les éléments associés.</p></article>
+      <article class="card"><div class="icon">⌘</div><h3>Données interconnectées</h3><p>Reliez les valeurs métier, biens supports, événements redoutés, sources de risque et scénarios grâce aux sélections intégrées.</p></article>
+      <article class="card"><div class="icon">◉</div><h3>Visualisation du risque</h3><p>Exploitez le radar de la menace, les schémas de scénarios et les matrices pour mieux lire vos résultats.</p></article>
+      <article class="card"><div class="icon">▥</div><h3>Tableaux éditables</h3><p>Ajoutez, supprimez, réorganisez et filtrez les éléments de vos tableaux pour faire évoluer votre étude.</p></article>
+      <article class="card"><div class="icon">⇧</div><h3>Rapports exportables</h3><p>Préparez une restitution en Markdown, PDF ou Word, avec page de garde et éléments de mise en page paramétrables.</p></article>
+      <article class="card"><div class="icon">?</div><h3>Aide intégrée</h3><p>Accédez à 17 rubriques d'aide, à un glossaire EBIOS RM, à la recherche plein texte et au dépannage avec F1.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="methode">
+  <div class="wrap">
+    <div class="section-head"><div class="kicker">La méthode EBIOS Risk Manager</div><h2>Les cinq ateliers, un fil conducteur.</h2><p>Retrouvez les grandes étapes de votre démarche dans un espace de travail cohérent et organisé.</p></div>
+    <div class="workshops">
+      <article class="workshop"><div class="num">01</div><h3>Cadrage & socle</h3><p>Valeurs métier, biens supports, événements redoutés et socle de sécurité.</p></article>
+      <article class="workshop"><div class="num">02</div><h3>Sources de risque</h3><p>Sources de risque, objectifs visés et couples SR/OV.</p></article>
+      <article class="workshop"><div class="num">03</div><h3>Scénarios stratégiques</h3><p>Parties prenantes, projection et radar de la menace.</p></article>
+      <article class="workshop"><div class="num">04</div><h3>Scénarios opérationnels</h3><p>Scénarios détaillés et actions élémentaires.</p></article>
+      <article class="workshop"><div class="num">05</div><h3>Traitement du risque</h3><p>Mesures complémentaires, risques résiduels et matrices.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="section alt" id="rapports">
+  <div class="wrap exports">
+    <div>
+      <div class="kicker">De l'analyse à la restitution</div><h2>Des livrables prêts à partager.</h2>
+      <p>Générez un rapport structuré qui rassemble la synthèse, les échelles, les figures, les ateliers, la conclusion et les annexes de traçabilité.</p>
+      <div class="export-list"><div class="export"><b>MD</b><small>Markdown</small></div><div class="export"><b>PDF</b><small>Document A4</small></div><div class="export"><b>DOCX</b><small>Microsoft Word</small></div></div>
+    </div>
+    <div class="quote-panel">
+      <strong>Une restitution adaptable à votre contexte</strong>
+      <p>Personnalisez notamment la page de garde, le logo, le sous-titre, l'organisation et la classification. Le rapport PDF et Word peut inclure un sommaire, une liste des figures et un chapitre dédié aux figures.</p>
+      <span class="pill">Page de garde paramétrable</span><span class="pill">Sommaire</span><span class="pill">Liste des figures</span><span class="pill">Annexes</span><span class="pill">Tableaux modifiables</span>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head"><div class="kicker">Conçu pour votre poste de travail</div><h2>Une application de bureau multiplateforme.</h2><p>EBIOS RM Studio s'appuie sur Qt 6 et C++17. Le projet est conçu pour être compilé sous Linux et Windows.</p></div>
+    <div class="feature-grid">
+      <article class="card"><div class="icon">▣</div><h3>Windows</h3><p>Compilation possible avec Visual Studio (MSVC) ou MinGW, avec déploiement des dépendances Qt prévu dans le processus de build.</p></article>
+      <article class="card"><div class="icon">⌘</div><h3>Linux</h3><p>Compilation documentée pour les distributions Linux, notamment Debian, Ubuntu et Fedora.</p></article>
+      <article class="card"><div class="icon">◇</div><h3>Format de projet ouvert</h3><p>Les études sont enregistrées au format .ebios, un fichier JSON lisible. Un outil permet également d'importer un classeur Excel compatible.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap">
+    <div class="eyebrow"><span class="dot"></span> Projet open source · Licence MIT</div>
+    <h2>Prêt à explorer EBIOS RM Studio ?</h2>
+    <p>Consultez le code source, les instructions de compilation et l'exemple de démonstration directement sur GitHub.</p>
+    <a class="btn btn-primary" href="https://github.com/hildgerald/EBIOS-RM_EDITOR_PRO" target="_blank" rel="noopener">Accéder au dépôt GitHub ↗</a>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap foot"><div>© <span id="year"></span> EBIOS RM Studio · Projet open source sous licence MIT.</div><div>Développé avec Qt 6 & C++17 · <a href="https://github.com/hildgerald/EBIOS-RM_EDITOR_PRO" target="_blank" rel="noopener">Code source sur GitHub ↗</a></div></div></footer>
+<script>document.getElementById('year').textContent=new Date().getFullYear();</script>
+</body>
+</html>

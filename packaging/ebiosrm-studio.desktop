@@ -1,8 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=EBIOS RM Studio
-Comment=Analyse de risques EBIOS Risk Manager
-Exec=EbiosRMStudio %f
-Terminal=false
-Categories=Office;Security;
-MimeType=application/x-ebios-project;
